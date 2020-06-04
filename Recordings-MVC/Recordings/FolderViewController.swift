@@ -125,7 +125,7 @@ class FolderViewController: UITableViewController {
 		return true
 	}
 	
-	override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+	override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
 		folder.remove(folder.contents[indexPath.row])
 	}
 	
@@ -141,7 +141,7 @@ class FolderViewController: UITableViewController {
 		if let uuidPath = coder.decodeObject(forKey: .uuidPathKey) as? [UUID], let folder = Store.shared.item(atUUIDPath: uuidPath) as? Folder {
 			self.folder = folder
 		} else {
-			if let index = navigationController?.viewControllers.index(of: self), index != 0 {
+			if let index = navigationController?.viewControllers.firstIndex(of: self), index != 0 {
 				navigationController?.viewControllers.remove(at: index)
 			}
 		}
